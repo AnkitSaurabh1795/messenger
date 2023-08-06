@@ -6,16 +6,20 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Sorts;
+import com.mongodb.client.model.UpdateOptions;
+import com.mongodb.client.model.Updates;
+import com.mongodb.client.result.UpdateResult;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.example.common.Utility;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static org.example.constants.MongoConstant.*;
 
@@ -101,5 +105,48 @@ public class MongodbHelper {
             throw new RuntimeException();
         }
         return result;
+    }
+
+    public <T> Optional<T> findOptionalByFilter(String collectionName, Bson filter, Class<T> cls) {
+        T result = null;
+        try {
+            MongoCollection<Document> collection = database.getCollection(collectionName);
+            Document searchResult = collection.find(filter).first();
+            if(Objects.nonNull(searchResult)) {
+                result = Utility.readObject(Utility.writeString(searchResult), cls);
+            }
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+        return Optional.of(result);
+    }
+
+    public boolean updateById(String collectionName, String id, Object valuesToUpdate) {
+        return this.updateById(collectionName, id, valuesToUpdate, false);
+    }
+
+    private boolean updateById(String collectionName, String id, Object valuesToUpdate, boolean upsert) {
+        try {
+            MongoCollection<Document> collection = database.getCollection(collectionName);
+            Map<String, Object> toUpdate = Utility.convertObjectToMap(valuesToUpdate);
+            List<Bson> updates = new ArrayList();
+            toUpdate.forEach((key, value) -> {
+                if (Objects.nonNull(value)) {
+                    if (value instanceof Map && ObjectUtils.isEmpty(value)) {
+                        updates.add(Updates.unset(key));
+                    } else {
+                        updates.add(Updates.set(key, value));
+                    }
+                }
+
+            });
+            Bson update = Updates.combine(updates);
+            UpdateResult updateResult = collection.updateOne(Filters.eq("_id", id), update, (new UpdateOptions()).upsert(upsert));
+            boolean updateDone = updateResult.getModifiedCount() > 0L;
+            return updateDone;
+        } catch (Exception ex) {
+            log.error("[MongoDb]Failed to write in database with error = ", ex);
+            throw new RuntimeException(ex);
+        }
     }
 }

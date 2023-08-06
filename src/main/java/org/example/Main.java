@@ -1,7 +1,9 @@
-package org.test;
+package org.example;
 
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
-    }
-}
+
+//@SpringBootApplication
+//public class MessengerApplication {
+//    public static void main(String[] args) {
+//        SpringApplication.run(MessengerApplication.class, args);
+//    }
+//}

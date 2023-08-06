@@ -1,18 +1,15 @@
-package org.example.entity;
+package org.example.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class UserEntity implements Serializable {
-    private static final long serialVersionUID = 2L;
+public class UserInfoDto {
 
     private String userId;
 
