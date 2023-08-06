@@ -33,9 +33,18 @@ public class MessageService implements IMessageService {
             if(messageList.isEmpty()) {
                 return UnreadMessageResponse.builder().status("success").message("No new messages").build();
             }
+            markSeen(messageList);
             return chatResponse(messageList);
         }
         return UnreadMessageResponse.builder().status("success").message("User is not logged in").build();
+    }
+
+    private void markSeen(List<MessageEntity> messageList) {
+        List<String> messageIds = new ArrayList<>();
+        messageList.forEach(message -> {
+            messageIds.add(message.getMessageId());
+        });
+        messageDao.markMessageSeen(messageIds);
     }
 
     @Override

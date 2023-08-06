@@ -41,39 +41,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-//    @Bean
-//    @Override
-//    public AuthenticationManager authenticationManagerBean() throws Exception {
-//        return super.authenticationManagerBean();
-//    }
-
-
-//    @Override
-//    protected void configure(HttpSecurity httpSecurity) throws Exception {
-//
-//        httpSecurity.csrf().disable().authorizeRequests().antMatchers("/authenticate").permitAll()
-//                .antMatchers("/users/signup").permitAll().anyRequest().authenticated().and().exceptionHandling()
-//                .authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
-//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//
-//        httpSecurity.addFilterBefore((Filter) jwtRequestFilter, (Class<? extends Filter>) AbstractAuthenticationProcessingFilter.class);
-//    }
-
 
     @Bean
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf().disable()
-            .authorizeRequests()
-            .antMatchers("/v1/create/user").permitAll()
-            .antMatchers("/v1/login").permitAll()
-            .anyRequest().authenticated()
-            .and().exceptionHandling()
-            .authenticationEntryPoint(jwtAuthenticationEntryPoint)
-            .and().sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//        httpSecurity.csrf().disable()
+//            .authorizeRequests()
+//            .antMatchers("/v1/create/user").permitAll()
+//            .antMatchers("/v1/login").permitAll()
+//            .anyRequest().authenticated()
+//            .and().exceptionHandling()
+//            .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+//            .and().sessionManagement()
+//            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        httpSecurity
+                .authorizeRequests()
+                .antMatchers("/**").permitAll()
+                .and()
+                .csrf().disable();
 
         // Register the JwtRequestFilter before the default UsernamePasswordAuthenticationFilter
-        httpSecurity.addFilterBefore( jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+        //httpSecurity.addFilterBefore( jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 }
 }

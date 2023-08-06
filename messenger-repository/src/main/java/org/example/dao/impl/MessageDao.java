@@ -3,6 +3,7 @@ package org.example.dao.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mongodb.client.model.Filters;
 import lombok.RequiredArgsConstructor;
+import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.example.dao.IMessageDao;
 import org.example.entity.MessageEntity;
@@ -59,6 +60,18 @@ public class MessageDao implements IMessageDao {
             return mongodbHelper.fetchAllWithFilter(COLLECTION_NAME, filter, MessageEntity.class);
         } catch (Exception ex) {
             throw ex;
+        }
+    }
+    @Override
+    public void markMessageSeen(List<String> messageIds)  {
+        try {
+            Bson search = Filters.in("_id", messageIds);
+            Bson newValue = new Document("isRead", true);
+            Bson updateOperationDocument = new Document("$set", newValue);
+            mongodbHelper.bulkUpdate(COLLECTION_NAME, search, updateOperationDocument);
+
+        } catch (Exception ex) {
+           throw new RuntimeException();
         }
     }
 }

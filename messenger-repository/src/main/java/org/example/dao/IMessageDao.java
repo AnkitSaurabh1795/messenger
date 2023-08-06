@@ -12,4 +12,6 @@ public interface IMessageDao {
     List<MessageEntity> fetchUserMessage(Integer pageNumber, Integer pageSize, String userId, boolean isRead);
 
     List<MessageEntity> fetchChatHistory(String fromUserId, String toUserId) throws JsonProcessingException;
+
+    void markMessageSeen(List<String> messageIds);
 }

@@ -3,6 +3,7 @@ package org.example.service.auth.impl;
 import lombok.RequiredArgsConstructor;
 import org.example.dao.IUserDao;
 import org.example.entity.UserEntity;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +19,9 @@ import java.util.Set;
 public class JwtUserService implements UserDetailsService {
 
     private final IUserDao userDao;
+
+    @Value("${application.user.defined}")
+    private String userId;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

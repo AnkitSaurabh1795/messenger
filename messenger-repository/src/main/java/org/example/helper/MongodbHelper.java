@@ -156,4 +156,19 @@ public class MongodbHelper {
             throw new RuntimeException(ex);
         }
     }
+
+    public void bulkUpdate(String collectionName, Bson filter, Bson param)  {
+        if (!Objects.isNull(filter) && !Objects.isNull(param)) {
+            try {
+                MongoCollection<Document> collection = database.getCollection(collectionName);
+                collection.updateMany(filter, param);
+            } catch (Exception var5) {
+                log.error("[MongoDb]Failed to write in database with error = ", var5);
+                throw new RuntimeException();
+            }
+        } else {
+            log.error("[MongoDb]filter/param cannot be null for bulk update");
+            throw new RuntimeException();
+        }
+    }
 }
