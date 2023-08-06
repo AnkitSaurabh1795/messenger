@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89d0b7fb-9652-4c7f-8a98-78183fff24bc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/IMessageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/IMessageDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/impl/MessageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/impl/MessageDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/helper/MongodbHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/helper/MongodbHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/impl/JwtUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/impl/JwtUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/message/impl/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/message/impl/MessageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

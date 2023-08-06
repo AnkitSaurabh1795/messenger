@@ -78,7 +78,7 @@ public class UserService implements IUserService {
             info.setToken(token);
             userDao.updateById(info.getUserId(), info);
             log.info("User {} successfully logged in", user.getUserName());
-            return "Success";
+            return "Success  " + token;
         }
         log.info("User {} is already logged in", user.getUserName());
         return "User is already logged in";
