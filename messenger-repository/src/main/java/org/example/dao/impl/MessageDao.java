@@ -34,7 +34,7 @@ public class MessageDao implements IMessageDao {
     }
 
     @Override
-    public List<MessageEntity> fetchAllUnreadMessage(Integer pageNumber, Integer pageSize, String userId, boolean isRead) {
+    public List<MessageEntity> fetchUserMessage(Integer pageNumber, Integer pageSize, String userId, boolean isRead) {
         try {
             Bson filter = Filters.and(
                     Filters.eq("toUserId", userId ),
@@ -47,12 +47,15 @@ public class MessageDao implements IMessageDao {
     }
 
     @Override
-    public List<MessageEntity> fetchChatHistory(String fromUserId, String toUserId) throws JsonProcessingException {
+    public List<MessageEntity> fetchChatHistory(String friend, String user) throws JsonProcessingException {
         try {
-            Bson filter = Filters.and(
-                    Filters.eq("fromUserId", fromUserId ),
-                    Filters.eq("toUserId", toUserId)
-            );
+            Bson filter = Filters.or(Filters.and(
+                    Filters.eq("fromUserId", friend ),
+                    Filters.eq("toUserId", user)
+            ),Filters.and(
+                    Filters.eq("fromUserId", user ),
+                    Filters.eq("toUserId", friend)
+            ));
             return mongodbHelper.fetchAllWithFilter(COLLECTION_NAME, filter, MessageEntity.class);
         } catch (Exception ex) {
             throw ex;

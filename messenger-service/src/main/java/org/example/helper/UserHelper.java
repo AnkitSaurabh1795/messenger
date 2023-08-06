@@ -39,7 +39,8 @@ public class UserHelper {
 
     public String getUserID(String userName) {
 
-        return userDao.fetchByUserName(userName).orElseThrow().getUserId();
+        return userDao.fetchByUserName(userName).orElseThrow(() ->
+                new RuntimeException("User id not found for user " + userName)).getUserId();
 
     }
 }

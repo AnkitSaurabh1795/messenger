@@ -6,18 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UnreadMessageResponse implements Serializable {
+public class Text implements Serializable {
+    private static final long serialVersionUID = 155L;
 
-    private static final long serialVersionUID = 151L;
+    private String userName;
 
-    private String status;
-    private String message;
-
-    private List<Chat> chats;
+    private String text;
 }
