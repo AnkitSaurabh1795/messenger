@@ -6,6 +6,7 @@ import org.example.dao.IUserDao;
 import org.example.entity.UserEntity;
 import org.example.model.request.UserCreateRequest;
 import org.example.model.request.UserLoginRequest;
+import org.example.model.response.AllUserResponse;
 import org.example.service.auth.IUserService;
 import org.example.util.JwtTokenUtil;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,6 +19,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.example.util.Util.generateUserId;
@@ -98,6 +101,19 @@ public class UserService implements IUserService {
         }
         log.info("User {} is already logged out", userName);
         return "User is already logged out";
+    }
+
+    @Override
+    public AllUserResponse fetchAllUsers() {
+        List<UserEntity> userEntities = userDao.fetch(0, 50);
+        if(userEntities.isEmpty()) {
+            return AllUserResponse.builder().status("No user exist").build();
+        }
+        AllUserResponse response = AllUserResponse.builder().users(new ArrayList<>()).build();
+        userEntities.forEach(user -> {
+            response.getUsers().add(user.getUserName());
+        });
+        return response;
     }
 
     private Authentication authenticate(String username, String password) throws Exception {

@@ -4,12 +4,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.model.request.UserCreateRequest;
 import org.example.model.request.UserLoginRequest;
+import org.example.model.response.AllUserResponse;
 import org.example.service.auth.IUserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -27,8 +25,19 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserLoginRequest request) throws Exception {
-        log.info("Request to log in user for username {}",request.getUserName());
+        log.info("Request to log in username {}",request.getUserName());
         return ResponseEntity.ok(userService.loginUser(request));
+    }
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(@RequestBody String userName) {
+        log.info("Request to log out username {}",userName);
+        return ResponseEntity.ok(userService.logoutUser(userName));
+    }
+
+    @GetMapping("/get/users")
+    public ResponseEntity<AllUserResponse> fetchAllUser() {
+        log.info("Request to get all users");
+        return ResponseEntity.ok(userService.fetchAllUsers());
     }
 
 }
