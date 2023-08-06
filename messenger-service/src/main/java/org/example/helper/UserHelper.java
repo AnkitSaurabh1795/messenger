@@ -30,10 +30,10 @@ public class UserHelper {
 
     public Boolean isSessionActive(String userName) {
 
-        UserEntity userEntity = userDao.fetchByUserName(userName).orElseThrow();
+        Optional<UserEntity> userEntity = userDao.fetchByUserName(userName);
         UserDetails userDetails = userDetailsService.loadUserByUsername(userName);
 
-        return jwtTokenUtil.validateToken(userEntity.getToken(), userDetails);
+        return jwtTokenUtil.validateToken(userEntity.get().getToken(), userDetails);
 
     }
 

@@ -3,7 +3,7 @@ package org.example.common;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
-import org.apache.logging.log4j.util.Strings;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -18,9 +18,9 @@ public class Utility {
                 .constructMapLikeType(HashMap.class, String.class, Object.class));
     }
 
-    public static <T> T readObject(String document, Class<T> cls) throws JsonProcessingException {
+    public static <T> T readObject(String document, Class<T> cls) throws IOException {
         T result = null;
-        if(Strings.isNotBlank(document)){
+        if(!StringUtils.isEmpty(document)){
             try {
                 result = cls == String.class ? (T) document : objectMapper.readValue(document, cls);
             }

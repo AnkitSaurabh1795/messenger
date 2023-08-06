@@ -19,6 +19,7 @@ import org.example.common.Utility;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
+import java.io.IOException;
 import java.util.*;
 
 import static org.example.constants.MongoConstant.*;
@@ -38,7 +39,7 @@ public class MongodbHelper {
             messageDoc.put("_id", key);
             collection.insertOne(messageDoc);
         }catch (Exception e){
-            throw e;
+            throw new RuntimeException();
         }
     }
 
@@ -58,6 +59,8 @@ public class MongodbHelper {
                             result.add(Utility.readObject(Utility.writeString(document),cls));
                         } catch (JsonProcessingException e) {
                             throw new RuntimeException(e);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
                         }
                     });
         } catch (Exception e) {
@@ -75,6 +78,8 @@ public class MongodbHelper {
                 try {
                     result.add(Utility.readObject(Utility.writeString(document), cls));
                 } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             });
@@ -97,7 +102,7 @@ public class MongodbHelper {
                     .forEach(document -> {
                         try {
                             result.add(Utility.readObject(Utility.writeString(document),cls));
-                        } catch (JsonProcessingException e) {
+                        } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
                     });
@@ -116,6 +121,8 @@ public class MongodbHelper {
                 result = Utility.readObject(Utility.writeString(searchResult), cls);
             }
         } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
         return Optional.of(result);
@@ -145,7 +152,7 @@ public class MongodbHelper {
             boolean updateDone = updateResult.getModifiedCount() > 0L;
             return updateDone;
         } catch (Exception ex) {
-            log.error("[MongoDb]Failed to write in database with error = ", ex);
+            log.error("[MongoDBDb]Failed to write in database with error = ", ex);
             throw new RuntimeException(ex);
         }
     }

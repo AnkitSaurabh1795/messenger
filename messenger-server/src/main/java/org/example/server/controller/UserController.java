@@ -25,6 +25,7 @@ public class UserController {
         return ResponseEntity.ok(userService.createUser(request)) ;
     }
 
+    @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserLoginRequest request) throws Exception {
         log.info("Request to log in user for username {}",request.getUserName());
         return ResponseEntity.ok(userService.loginUser(request));
