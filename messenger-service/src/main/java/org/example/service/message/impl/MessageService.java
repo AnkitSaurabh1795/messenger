@@ -62,7 +62,7 @@ public class MessageService implements IMessageService {
     }
 
     private BaseResponse createChatHistoryResponse(List<MessageEntity> messages) {
-        ChatHistoryResponse response = (ChatHistoryResponse) ChatHistoryResponse.builder().texts(new ArrayList<>()).message("success")
+        ChatHistoryResponse response = ChatHistoryResponse.childBuilder().texts(new ArrayList<>()).message("success")
                 .status("You have message(s)").build();
 
         messages.forEach(message -> {

@@ -5,21 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89d0b7fb-9652-4c7f-8a98-78183fff24bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/request/ChatHistoryRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/request/SendMessageRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/BaseResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/ChatHistoryResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/Text.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/messenger-server/src/main/java/org/example/server/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger-model/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-model/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/UnreadMessageResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/UnreadMessageResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/IMessageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/IMessageDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/impl/MessageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/impl/MessageDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/entity/MessageEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/entity/MessageEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/helper/UserHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/helper/UserHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/message/IMessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/message/IMessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/BaseResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/BaseResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/ChatHistoryResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/ChatHistoryResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/impl/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/impl/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/message/impl/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/message/impl/MessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,15 +47,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "jdk.selected.JAVA_MODULE": "temurin-11",
-    "settings.editor.selected.configurable": "Errors"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;temurin-11&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
-}]]></component>
+}</component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn clean" />

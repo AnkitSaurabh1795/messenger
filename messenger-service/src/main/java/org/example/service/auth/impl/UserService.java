@@ -58,12 +58,17 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public String loginUser(UserLoginRequest user) throws Exception {
+    public String loginUser(UserLoginRequest user) {
         Optional<UserEntity> userEntity = userDao.fetchByUserName(user.getUserName());
         UserEntity info = userEntity.orElse(null);
         if (info != null && info.getToken() == null) {
-            Authentication authentication = authenticate(user.getUserName(),
-                    user.getPassCode());
+            Authentication authentication = null;
+            try {
+                authentication = authenticate(user.getUserName(),
+                        user.getPassCode());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
             SecurityContextHolder.getContext().setAuthentication(authentication);
             final UserDetails userDetails = jwtUserService.loadUserByUsername(user.getUserName());
             final String token = jwtTokenUtil.generateToken(userDetails);
