@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89d0b7fb-9652-4c7f-8a98-78183fff24bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-server/src/main/java/org/example/server/application/MessengerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-server/src/main/java/org/example/server/application/MessengerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-server/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/WebSecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +60,8 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn clean" />
-      <command value="mvn install" />
       <command value="mvn compile" />
+      <command value="mvn install" />
     </option>
   </component>
   <component name="RunManager" selected="Application.MessengerApplication">

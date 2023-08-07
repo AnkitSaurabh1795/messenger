@@ -13,7 +13,6 @@
         <module>messenger-service</module>
         <module>messenger-server</module>
         <module>messenger-model</module>
-        <module>auth-service</module>
     </modules>
 
     <parent>

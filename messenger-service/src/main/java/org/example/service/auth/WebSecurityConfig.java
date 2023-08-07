@@ -17,7 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
-@EnableJpaRepositories(basePackages = "org.example.service")
+
 @EnableWebSecurity
 @Configuration
 @Order(1)
@@ -54,13 +54,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //            .authenticationEntryPoint(jwtAuthenticationEntryPoint)
 //            .and().sessionManagement()
 //            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        httpSecurity
+        httpSecurity.csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/error").permitAll()
+                .antMatchers("/error/**").permitAll()
                 .antMatchers("/**").permitAll()
                 .and()
-                .csrf().disable();
+                .exceptionHandling()
+                ;
 
         // Register the JwtRequestFilter before the default UsernamePasswordAuthenticationFilter
-        //httpSecurity.addFilterBefore( jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+        httpSecurity.addFilterBefore( jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 }
 }
