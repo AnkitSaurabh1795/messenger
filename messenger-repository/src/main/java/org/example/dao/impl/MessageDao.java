@@ -39,7 +39,7 @@ public class MessageDao implements IMessageDao {
         try {
             Bson filter = Filters.and(
                     Filters.eq("toUserId", userId ),
-                    Filters.eq("isRead", isRead)
+                    Filters.eq("read", isRead)
             );
             return mongodbHelper.fetchAllWithFilterAndPaginated(COLLECTION_NAME, filter, pageNumber, pageSize, MessageEntity.class);
         } catch (Exception ex) {
@@ -66,7 +66,7 @@ public class MessageDao implements IMessageDao {
     public void markMessageSeen(List<String> messageIds)  {
         try {
             Bson search = Filters.in("_id", messageIds);
-            Bson newValue = new Document("isRead", true);
+            Bson newValue = new Document("read", true);
             Bson updateOperationDocument = new Document("$set", newValue);
             mongodbHelper.bulkUpdate(COLLECTION_NAME, search, updateOperationDocument);
 

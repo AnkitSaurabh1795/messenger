@@ -9,7 +9,7 @@ import org.example.model.response.UnreadMessageResponse;
 
 public interface IMessageService {
 
-    UnreadMessageResponse fetchUnreadMessages(String userName);
+    BaseResponse fetchUnreadMessages(String userName);
 
     String sendMessage(SendMessageRequest sendMessageRequest);
 

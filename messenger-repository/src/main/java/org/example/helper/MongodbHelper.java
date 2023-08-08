@@ -22,6 +22,8 @@ import org.springframework.util.ObjectUtils;
 import java.io.IOException;
 import java.util.*;
 
+import static org.example.common.Utility.readObject;
+import static org.example.common.Utility.writeString;
 import static org.example.constants.MongoConstant.*;
 
 @Slf4j
@@ -49,20 +51,18 @@ public class MongodbHelper {
 
         try {
             MongoCollection<Document> collection = database.getCollection(collectionName);
-            collection.find()
-                    .filter(bson)
-                    .sort(Sorts.descending(CREATED_AT))
-                    .skip(pageNumber)
+
+            List<Document> documents = collection.find(bson)
+                    .sort(Sorts.ascending("createdAt"))
+                    .skip(pageNumber * pageSize)
                     .limit(pageSize)
-                    .forEach(document -> {
-                        try {
-                            result.add(Utility.readObject(Utility.writeString(document),cls));
-                        } catch (JsonProcessingException e) {
-                            throw new RuntimeException(e);
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });
+                    .into(new ArrayList<>());
+
+            for (Document document : documents) {
+                T object = readObject(document.toJson(), cls);
+                result.add(object);
+            }
+
         } catch (Exception e) {
             throw new RuntimeException();
         }
@@ -74,19 +74,21 @@ public class MongodbHelper {
 
         try {
             MongoCollection<Document> collection = database.getCollection(collectionName);
-            collection.find(bson).forEach(document -> {
-                try {
-                    result.add(Utility.readObject(Utility.writeString(document), cls));
-                } catch (JsonProcessingException e) {
-                    throw new RuntimeException(e);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-            return result;
-        } catch (Exception e) {
+
+            List<Document> documents = collection.find(bson)
+                    .sort(Sorts.ascending("createdAt"))
+                    .into(new ArrayList<>());
+
+            for (Document document : documents) {
+                T object = readObject(document.toJson(), cls);
+                result.add(object);
+            }
+        }
+        catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+        return result;
     }
 
     public <T> List<T> fetchAllWithoutFilterPaginated(String collectionName, Integer pageNumber, Integer pageSize,
@@ -101,8 +103,10 @@ public class MongodbHelper {
                     .limit(pageSize)
                     .forEach(document -> {
                         try {
-                            result.add(Utility.readObject(Utility.writeString(document),cls));
+                            result.add(readObject(Utility.writeString(document),cls));
                         } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        } catch (Exception e) {
                             throw new RuntimeException(e);
                         }
                     });
@@ -118,14 +122,16 @@ public class MongodbHelper {
             MongoCollection<Document> collection = database.getCollection(collectionName);
             Document searchResult = collection.find(filter).first();
             if(Objects.nonNull(searchResult)) {
-                result = Utility.readObject(Utility.writeString(searchResult), cls);
+                result = readObject(Utility.writeString(searchResult), cls);
             }
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        return Optional.of(result);
+        return Optional.ofNullable(result);
     }
 
     public boolean updateById(String collectionName, String id, Object valuesToUpdate) {

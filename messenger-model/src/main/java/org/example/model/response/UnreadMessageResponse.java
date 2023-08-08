@@ -1,9 +1,6 @@
 package org.example.model.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,13 +8,16 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class UnreadMessageResponse implements Serializable {
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class UnreadMessageResponse extends BaseResponse implements Serializable {
 
     private static final long serialVersionUID = 151L;
 
-    private String status;
-    private String message;
-
     private List<Chat> chats;
+    @Builder(builderMethodName = "childBuilder")
+    public UnreadMessageResponse(String status, String message, List<Chat> chats) {
+        super(status, message);
+        this.chats = chats;
+    }
 }

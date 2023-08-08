@@ -52,10 +52,22 @@ public class UserDao implements IUserDao {
 
     }
     @Override
+    public Optional<UserEntity> fetchByUserId(String userId) {
+        try{
+            Bson filter = Filters.and(
+                    Filters.eq("userId", userId )
+            );
+            return mongodbHelper.findOptionalByFilter(COLLECTION_NAME, filter, UserEntity.class);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @Override
     public void updateById(String id, UserEntity user) {
         try {
             Date date = new Date();
             user.setUpdatedAt(date.getTime());
+            mongodbHelper.updateById(COLLECTION_NAME, id, user);
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }

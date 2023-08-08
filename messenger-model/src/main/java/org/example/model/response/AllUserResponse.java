@@ -16,5 +16,5 @@ public class AllUserResponse implements Serializable {
     private static final long serialVersionUID = 156L;
 
     private String status;
-    private List<String> users;
+    private List<String> data;
 }

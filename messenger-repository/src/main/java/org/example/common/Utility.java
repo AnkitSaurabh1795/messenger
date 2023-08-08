@@ -18,7 +18,7 @@ public class Utility {
                 .constructMapLikeType(HashMap.class, String.class, Object.class));
     }
 
-    public static <T> T readObject(String document, Class<T> cls) throws IOException {
+    public static <T> T  readObject(String document, Class<T> cls) throws Exception     {
         T result = null;
         if(!StringUtils.isEmpty(document)){
             try {
@@ -32,7 +32,7 @@ public class Utility {
 
     }
 
-    public static String writeString(Object object) throws JsonProcessingException {
+    public static String writeString(Object object) throws Exception {
         try {
             return object instanceof String ? (String) object : objectMapper.writeValueAsString(object);
         } catch (Exception ex) {

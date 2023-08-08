@@ -18,18 +18,18 @@ public class UserController {
     private final IUserService userService;
 
     @PostMapping("/create/user")
-    public ResponseEntity<?> createUser(@RequestBody UserCreateRequest request) {
+    public ResponseEntity<String> createUser(@RequestBody UserCreateRequest request) {
         log.info("Request to create user for username {}",request.getUserName());
         return ResponseEntity.ok(userService.createUser(request)) ;
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserLoginRequest request) throws Exception {
+    public ResponseEntity<String> login(@RequestBody UserLoginRequest request) throws Exception {
         log.info("Request to log in username {}",request.getUserName());
         return ResponseEntity.ok(userService.loginUser(request));
     }
     @PostMapping("/logout")
-    public ResponseEntity<?> logout(@RequestBody String userName) {
+    public ResponseEntity<String> logout(@RequestBody String userName) {
         log.info("Request to log out username {}",userName);
         return ResponseEntity.ok(userService.logoutUser(userName));
     }

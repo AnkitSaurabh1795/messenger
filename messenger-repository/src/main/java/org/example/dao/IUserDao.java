@@ -13,4 +13,6 @@ public interface IUserDao {
     Optional<UserEntity> fetchByUserName(String userName);
 
     void updateById(String id, UserEntity user);
+
+    Optional<UserEntity> fetchByUserId(String userId);
 }

@@ -25,8 +25,8 @@ public class MessageService implements IMessageService {
 
     private final IMessageDao messageDao;
     @Override
-    public UnreadMessageResponse fetchUnreadMessages(String userName) {
-        if(userHelper.isUserLoggedIn(userName) && userHelper.isSessionActive(userName)) {
+    public BaseResponse fetchUnreadMessages(String userName) {
+        if(userHelper.isUserLoggedIn(userName)) {
             String userId = userHelper.getUserID(userName);
             //TODo: add pagination logic on scale
             List<MessageEntity> messageList = messageDao.fetchUserMessage(0, 50, userId,false);
@@ -49,7 +49,7 @@ public class MessageService implements IMessageService {
 
     @Override
     public String sendMessage(SendMessageRequest sendMessageRequest) {
-        if(userHelper.isUserLoggedIn(sendMessageRequest.getFrom()) && userHelper.isSessionActive(sendMessageRequest.getFrom())) {
+        if(userHelper.isUserLoggedIn(sendMessageRequest.getFrom())) {
             MessageEntity message = createMessage(sendMessageRequest);
             messageDao.persist(message, message.getMessageId());
             return "success";
@@ -59,8 +59,10 @@ public class MessageService implements IMessageService {
 
     @Override
     public BaseResponse fetchChatHistory(ChatHistoryRequest chatHistoryRequest) throws JsonProcessingException {
-        if(userHelper.isUserLoggedIn(chatHistoryRequest.getUser()) && userHelper.isSessionActive(chatHistoryRequest.getUser())) {
-            List<MessageEntity> messages = messageDao.fetchChatHistory(chatHistoryRequest.getFriend(), chatHistoryRequest.getUser());
+        if(userHelper.isUserLoggedIn(chatHistoryRequest.getUser())) {
+            String fromUserId = userHelper.getUserID(chatHistoryRequest.getFriend());
+            String toUserId = userHelper.getUserID(chatHistoryRequest.getUser());
+            List<MessageEntity> messages = messageDao.fetchChatHistory(fromUserId, toUserId);
             if(messages.isEmpty()) {
                 return BaseResponse.builder().message("success").status("No chat history").build();
             }
@@ -75,7 +77,8 @@ public class MessageService implements IMessageService {
                 .status("You have message(s)").build();
 
         messages.forEach(message -> {
-            response.getTexts().add(Text.builder().userName(message.getFromUserId()).build());
+            response.getTexts().add(Text.builder().userName(userHelper.getUserName(message.getFromUserId()))
+                    .text(message.getText()).build());
 
         });
 
@@ -83,8 +86,9 @@ public class MessageService implements IMessageService {
 
     }
 
+
     private UnreadMessageResponse chatResponse(List<MessageEntity> messageList) {
-        UnreadMessageResponse response = UnreadMessageResponse.builder().message("success").message("You have message(s)")
+        UnreadMessageResponse response = UnreadMessageResponse.childBuilder().status("success").message("You have message(s)")
                 .chats(new ArrayList<>()).build();
         Map<String, List<String>> chatMap = new LinkedHashMap<>();
         messageList.forEach(message -> {
@@ -94,7 +98,7 @@ public class MessageService implements IMessageService {
 
         });
         chatMap.forEach((userId, messages) -> {
-            response.getChats().add(Chat.builder().userName(userId).messages(messages).build());
+            response.getChats().add(Chat.builder().username(userHelper.getUserName(userId)).messages(messages).build());
         });
 
         return response;

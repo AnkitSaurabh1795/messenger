@@ -7,10 +7,31 @@
     <list default="true" id="89d0b7fb-9652-4c7f-8a98-78183fff24bc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/AllUserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/AllUserResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/Chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/UnreadMessageResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-model/src/main/java/org/example/model/response/UnreadMessageResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/common/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/common/Utility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/IUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/IUserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/impl/MessageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/impl/MessageDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/impl/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/impl/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/entity/MessageEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/entity/MessageEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/helper/MongodbHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-repository/src/main/java/org/example/helper/MongodbHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-server/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messenger-server/src/main/java/org/example/server/application/MessengerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-server/src/main/java/org/example/server/application/MessengerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger-server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-server/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-server/src/main/java/org/example/server/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-server/src/main/java/org/example/server/controller/MessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-server/src/main/java/org/example/server/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-server/src/main/java/org/example/server/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/helper/UserHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/helper/UserHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/JwtAuthenticationEntryPoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/JwtRequestFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/WebSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/impl/JwtUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/impl/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/impl/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/message/IMessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/message/IMessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/message/impl/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/message/impl/MessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messenger-service/src/main/java/org/example/util/JwtTokenUtil.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,9 +80,9 @@
 }]]></component>
   <component name="RunAnythingCache">
     <option name="myCommands">
+      <command value="mvn install" />
       <command value="mvn clean" />
       <command value="mvn compile" />
-      <command value="mvn install" />
     </option>
   </component>
   <component name="RunManager" selected="Application.MessengerApplication">
@@ -109,6 +130,97 @@
       <updated>1691170130043</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/impl/UserDao.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/impl/UserService.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/impl/UserService.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/auth/impl/UserService.java</url>
+          <line>81</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/impl/UserDao.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/impl/UserDao.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-repository/src/main/java/org/example/helper/MongodbHelper.java</url>
+          <line>142</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/message/impl/MessageService.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/impl/MessageDao.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-repository/src/main/java/org/example/helper/MongodbHelper.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/message/impl/MessageService.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/impl/MessageDao.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/message/impl/MessageService.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-repository/src/main/java/org/example/dao/impl/MessageDao.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-service/src/main/java/org/example/service/message/impl/MessageService.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-repository/src/main/java/org/example/helper/MongodbHelper.java</url>
+          <line>166</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/messenger-repository/src/main/java/org/example/helper/MongodbHelper.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

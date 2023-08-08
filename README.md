@@ -9,4 +9,5 @@ Build this project in your machine and then run
 
 api details are same as in requirements docs. every api end point is now starts with v1
 
+PS: currently issue is with Spring security
 TODO: add Docker 

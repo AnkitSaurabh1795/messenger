@@ -14,7 +14,7 @@ import java.util.List;
 @Builder
 public class Chat implements Serializable {
     private static final long serialVersionUID = 152L;
-    private String userName;
+    private String username;
 
     private List<String> messages;
 }
